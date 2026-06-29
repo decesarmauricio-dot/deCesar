@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>DE · CESAR — Impresión 3D · Figuras con licencia</title>
+<meta name="description" content="Figuras y productos impresos en 3D con licencia de venta. En stock y por encargo. Rosario, Argentina." />
+
+<!-- ════════════════════════════════════════════════════════════════
+     Open Graph: esto es lo que se ve cuando pegás el link en
+     WhatsApp / Instagram / Facebook. Cambiá la imagen por una foto
+     tuya buena cuando la tengas (1200x630px ideal).
+     ════════════════════════════════════════════════════════════════ -->
+<meta property="og:title" content="DE · CESAR — Impresión 3D" />
+<meta property="og:description" content="Figuras con licencia. En stock y por encargo. Rosario." />
+<meta property="og:type" content="website" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  :root{
+    --paper:      #F4F2EC;
+    --paper-card: #FBFAF6;
+    --ink:        #1B1916;
+    --ink-soft:   #6B645B;
+    --hairline:   #E3DDD2;
+    --porphyry:   #6E2A3C;  /* púrpura imperial: el guiño romano del nombre */
+    --porphyry-d: #571F2E;
+    --stock:      #3F6B4E;  /* verde calmo = disponible */
+    --encargo:    #A66322;  /* ámbar = por encargo */
+    --wsp:        #1FA855;
+
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans:  "Hanken Grotesk", system-ui, sans-serif;
+    --mono:  "Space Mono", "SFMono-Regular", monospace;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+
+  .wrap{ width:min(1120px, 92vw); margin-inline:auto; }
+
+  /* ───────────── HERO ───────────── */
+  header.hero{
+    padding:clamp(3rem, 9vh, 6rem) 0 clamp(2.5rem, 6vh, 4rem);
+    border-bottom:1px solid var(--hairline);
+    text-align:center;
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.34em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-bottom:1.6rem;
+  }
+
+  /* La firma: inscripción romana con interpunct */
+  .wordmark{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:clamp(3.4rem, 12vw, 7.5rem);
+    line-height:.9;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  .wordmark .dot{
+    color:var(--porphyry);
+    font-weight:700;
+    padding-inline:.06em;
+  }
+
+  .tagline{
+    font-family:var(--mono);
+    font-size:clamp(.7rem, 2.2vw, .85rem);
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:1.4rem;
+  }
+
+  .hero-rule{
+    width:48px; height:2px; background:var(--porphyry);
+    margin:2.2rem auto 1.8rem;
+  }
+
+  .hero-lead{
+    font-family:var(--serif);
+    font-size:clamp(1.25rem, 3.4vw, 1.7rem);
+    font-weight:500;
+    line-height:1.45;
+    max-width:30ch;
+    margin-inline:auto;
+    color:var(--ink);
+  }
+
+  /* ───────────── FILTROS ───────────── */
+  .controls{
+    display:flex; flex-wrap:wrap; gap:.6rem;
+    justify-content:center;
+    padding:2.2rem 0 .4rem;
+  }
+  .filter{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    background:transparent;
+    color:var(--ink-soft);
+    border:1px solid var(--hairline);
+    border-radius:999px;
+    padding:.55rem 1.1rem;
+    cursor:pointer;
+    transition:all .18s ease;
+  }
+  .filter:hover{ border-color:var(--ink); color:var(--ink); }
+  .filter[aria-pressed="true"]{
+    background:var(--ink); color:var(--paper); border-color:var(--ink);
+  }
+  .filter:focus-visible{ outline:2px solid var(--porphyry); outline-offset:2px; }
+
+  /* ───────────── GRID ───────────── */
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(270px, 1fr));
+    gap:1.6rem;
+    padding:2rem 0 1rem;
+  }
+
+  .card{
+    background:var(--paper-card);
+    border:1px solid var(--hairline);
+    border-radius:4px;
+    overflow:hidden;
+    display:flex; flex-direction:column;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    box-shadow:0 14px 30px -18px rgba(27,25,22,.4);
+  }
+
+  .thumb{
+    position:relative;
+    aspect-ratio:4/3;
+    background:var(--paper);
+    overflow:hidden;
+    border-bottom:1px solid var(--hairline);
+  }
+  .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
+
+  /* placeholder cuando todavía no cargaste foto */
+  .thumb.empty{
+    display:grid; place-items:center;
+    background:
+      repeating-linear-gradient(45deg, #ECE7DD 0 12px, #F2EDE4 12px 24px);
+  }
+  .thumb.empty span{
+    font-family:var(--serif);
+    font-size:3.2rem; font-weight:600;
+    color:var(--porphyry);
+    opacity:.5;
+  }
+
+  .badge{
+    position:absolute; top:.7rem; left:.7rem;
+    font-family:var(--mono);
+    font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
+    padding:.34rem .6rem;
+    border-radius:999px;
+    background:var(--paper-card);
+    display:inline-flex; align-items:center; gap:.4rem;
+    box-shadow:0 1px 4px rgba(0,0,0,.08);
+  }
+  .badge .pip{ width:7px; height:7px; border-radius:50%; }
+  .badge.stock   .pip{ background:var(--stock); }
+  .badge.encargo .pip{ background:var(--encargo); }
+  .badge.stock   { color:var(--stock); }
+  .badge.encargo { color:var(--encargo); }
+
+  .card-body{ padding:1.1rem 1.1rem 1.2rem; display:flex; flex-direction:column; gap:.55rem; flex:1; }
+
+  .card h3{
+    font-family:var(--serif);
+    font-size:1.5rem; font-weight:600; line-height:1.1;
+  }
+  .licencia{
+    font-family:var(--mono);
+    font-size:.66rem; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--ink-soft);
+    margin-top:-.2rem;
+  }
+
+  .specs{
+    font-family:var(--mono);
+    font-size:.72rem; line-height:1.7;
+    color:var(--ink-soft);
+    border-top:1px solid var(--hairline);
+    padding-top:.6rem; margin-top:.2rem;
+  }
+  .specs span{ color:var(--ink); }
+
+  .price-row{ display:flex; align-items:baseline; justify-content:space-between; margin-top:auto; padding-top:.5rem; }
+  .price{ font-family:var(--mono); font-size:1.15rem; font-weight:700; }
+
+  .cta{
+    margin-top:.7rem;
+    display:flex; align-items:center; justify-content:center; gap:.5rem;
+    font-family:var(--sans);
+    font-size:.85rem; font-weight:600;
+    text-decoration:none;
+    background:var(--ink); color:var(--paper);
+    border-radius:3px;
+    padding:.75rem 1rem;
+    transition:background .18s ease;
+  }
+  .cta:hover{ background:var(--porphyry); }
+  .cta:focus-visible{ outline:2px solid var(--porphyry); outline-offset:2px; }
+  .cta svg{ width:16px; height:16px; }
+
+  /* ───────────── CÓMO COMPRAR ───────────── */
+  .comprar{
+    margin-top:3rem;
+    border-top:1px solid var(--hairline);
+    padding:3.4rem 0;
+  }
+  .section-label{
+    font-family:var(--mono);
+    font-size:.72rem; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--porphyry);
+    margin-bottom:1.4rem;
+  }
+  .comprar h2{
+    font-family:var(--serif); font-weight:600;
+    font-size:clamp(1.8rem,5vw,2.6rem);
+    line-height:1.1; margin-bottom:1.8rem;
+  }
+  .modos{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.6rem; }
+  .modo{ border:1px solid var(--hairline); border-radius:4px; padding:1.4rem 1.3rem; background:var(--paper-card); }
+  .modo .tit{ display:flex; align-items:center; gap:.6rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.8rem; }
+  .modo .pip{ width:9px; height:9px; border-radius:50%; }
+  .modo.stock   .pip{ background:var(--stock); }   .modo.stock   .tit{ color:var(--stock); }
+  .modo.encargo .pip{ background:var(--encargo); } .modo.encargo .tit{ color:var(--encargo); }
+  .modo p{ font-size:.92rem; color:var(--ink-soft); }
+  .modo p strong{ color:var(--ink); }
+
+  /* ───────────── FOOTER ───────────── */
+  footer{
+    border-top:1px solid var(--hairline);
+    padding:2.8rem 0 3.4rem;
+    text-align:center;
+  }
+  footer .wordmark-sm{
+    font-family:var(--serif); font-weight:600;
+    font-size:1.6rem; letter-spacing:.1em; text-transform:uppercase;
+    margin-bottom:1.2rem;
+  }
+  footer .wordmark-sm .dot{ color:var(--porphyry); }
+  .links{ display:flex; gap:1.4rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.6rem; }
+  .links a{
+    font-family:var(--mono); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--ink); text-decoration:none;
+    border-bottom:1px solid var(--porphyry); padding-bottom:2px;
+  }
+  .links a:hover{ color:var(--porphyry); }
+  footer small{ font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; color:var(--ink-soft); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation:none !important; transition:none !important; }
+    html{ scroll-behavior:auto; }
+  }
+</style>
+</head>
+<body>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Rosario · Argentina</p>
+      <h1 class="wordmark">DE<span class="dot">·</span>CESAR</h1>
+      <p class="tagline">Impresión 3D · Figuras con licencia</p>
+      <div class="hero-rule"></div>
+      <p class="hero-lead">Piezas impresas a mano, una por una. Algunas listas para enviar, otras hechas para vos.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="controls" aria-label="Filtrar productos">
+      <button class="filter" data-filter="todos"   aria-pressed="true">Todo</button>
+      <button class="filter" data-filter="stock"   aria-pressed="false">En stock</button>
+      <button class="filter" data-filter="encargo" aria-pressed="false">Por encargo</button>
+    </nav>
+
+    <section class="grid" id="grid" aria-live="polite"></section>
+
+    <section class="comprar" id="como-comprar">
+      <p class="section-label">Cómo comprar</p>
+      <h2>Stock o encargo,<br/>siempre por WhatsApp.</h2>
+      <div class="modos">
+        <div class="modo stock">
+          <div class="tit"><span class="pip"></span>En stock</div>
+          <p>Lo ves marcado como disponible: ya está impreso y listo. Lo despacho en <strong>24 a 48 hs</strong>.</p>
+        </div>
+        <div class="modo encargo">
+          <div class="tit"><span class="pip"></span>Por encargo</div>
+          <p>Algunas piezas las imprimo a pedido. El tiempo de producción es de <strong>3 a 5 días hábiles</strong> según el tamaño y la cola de trabajos.</p>
+        </div>
+        <div class="modo">
+          <div class="tit" style="color:var(--ink)"><span class="pip" style="background:var(--ink)"></span>Envíos · Custom</div>
+          <p>Envío a todo el país (Correo Argentino / Andreani) o retiro en Rosario. ¿Querés otro color o un tamaño especial? <strong>Se puede</strong>, escribime.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="wordmark-sm">DE<span class="dot">·</span>CESAR</div>
+      <div class="links" id="footer-links"></div>
+      <small id="footer-note">Impresión 3D con licencia de venta · Rosario, Santa Fe</small>
+    </div>
+  </footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   ░░  1) CONFIGURACIÓN — editá SOLO esto con tus datos  ░░
+   ═══════════════════════════════════════════════════════════════════════ */
+const CONFIG = {
+  // Tu número de WhatsApp en formato internacional, SIN + ni espacios.
+  // Argentina + Rosario: 549 + 341 + número.  Ej: 5493415555555
+  whatsapp: "5493415555555",
+
+  // Links de tus redes (dejá "" en el que no uses y desaparece del footer)
+  instagram:    "https://instagram.com/decesar",
+  facebook:     "https://facebook.com/tu-pagina",
+  mercadolibre: "",   // ej: "https://articulo.mercadolibre.com.ar/..."
+};
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ░░  2) PRODUCTOS — agregá / sacá / editá bloques de acá  ░░
+
+   Cada producto es un { ... }. Para sumar uno nuevo, copiá un bloque
+   entero (desde la { hasta la }, con la coma final) y cambiale los datos.
+
+   Campos:
+     nombre   → cómo se llama la pieza
+     licencia → de qué es (personaje / saga)
+     precio   → texto libre, ej "$ 12.000"
+     estado   → "stock"  o  "encargo"   (eso pinta el cartelito)
+     dias     → solo si es encargo, ej "3-5 días"  (poné "" si es stock)
+     medidas  → ej "14 cm de alto"
+     material → ej "PLA · multicolor"
+     img      → ruta o URL de la foto. Dejá ""  →  muestra un placeholder.
+                Para usar fotos propias: poné todas en una carpeta /img
+                al lado de este archivo y acá escribí  "img/loquesea.jpg"
+   ═══════════════════════════════════════════════════════════════════════ */
+const PRODUCTOS = [
+  {
+    nombre:   "Casco coleccionable",
+    licencia: "Star Wars",
+    precio:   "$ 18.000",
+    estado:   "stock",
+    dias:     "",
+    medidas:  "16 cm de alto",
+    material: "PLA · negro mate",
+    img:      ""
+  },
+  {
+    nombre:   "Figura articulada",
+    licencia: "Dragon Ball",
+    precio:   "$ 9.500",
+    estado:   "stock",
+    dias:     "",
+    medidas:  "12 cm de alto",
+    material: "PLA · multicolor",
+    img:      ""
+  },
+  {
+    nombre:   "Busto detallado",
+    licencia: "The Witcher",
+    precio:   "$ 24.000",
+    estado:   "encargo",
+    dias:     "3-5 días",
+    medidas:  "20 cm de alto",
+    material: "Resina · gris primer",
+    img:      ""
+  },
+  {
+    nombre:   "Llavero a pedido",
+    licencia: "Personalizado",
+    precio:   "$ 2.500",
+    estado:   "encargo",
+    dias:     "2-3 días",
+    medidas:  "5 cm",
+    material: "PLA · color a elección",
+    img:      ""
+  },
+];
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ░░  3) MOTOR — de acá para abajo no necesitás tocar nada  ░░
+   ═══════════════════════════════════════════════════════════════════════ */
+const wspIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6-.3.3c-.1.1-.3.3-.1.5.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.2Z"/></svg>';
+
+function badge(p){
+  const cls = p.estado === "stock" ? "stock" : "encargo";
+  const txt = p.estado === "stock"
+    ? "En stock"
+    : (p.dias ? "Encargo · " + p.dias : "Por encargo");
+  return `<span class="badge ${cls}"><span class="pip"></span>${txt}</span>`;
+}
+
+function thumb(p){
+  if (p.img && p.img.trim() !== "")
+    return `<div class="thumb"><img src="${p.img}" alt="${p.nombre} — ${p.licencia}" loading="lazy"/>${badge(p)}</div>`;
+  const inicial = (p.nombre || "?").trim().charAt(0).toUpperCase();
+  return `<div class="thumb empty"><span>${inicial}</span>${badge(p)}</div>`;
+}
+
+function waLink(p){
+  const msg = `Hola! Me interesa "${p.nombre}" (${p.licencia}) — ${p.precio}. ¿Está disponible?`;
+  return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
+}
+
+function card(p){
+  return `<article class="card" data-estado="${p.estado}">
+    ${thumb(p)}
+    <div class="card-body">
+      <h3>${p.nombre}</h3>
+      <div class="licencia">${p.licencia}</div>
+      <div class="specs">
+        Medida&nbsp;&nbsp;<span>${p.medidas}</span><br/>
+        Material&nbsp;<span>${p.material}</span>
+      </div>
+      <div class="price-row"><span class="price">${p.precio}</span></div>
+      <a class="cta" href="${waLink(p)}" target="_blank" rel="noopener">
+        ${wspIcon} Consultar por WhatsApp
+      </a>
+    </div>
+  </article>`;
+}
+
+const grid = document.getElementById("grid");
+function render(filtro="todos"){
+  const lista = filtro === "todos" ? PRODUCTOS : PRODUCTOS.filter(p => p.estado === filtro);
+  grid.innerHTML = lista.length
+    ? lista.map(card).join("")
+    : `<p style="grid-column:1/-1;text-align:center;font-family:var(--mono);color:var(--ink-soft);padding:2rem 0">No hay piezas en esta categoría por ahora.</p>`;
+}
+render();
+
+document.querySelectorAll(".filter").forEach(btn=>{
+  btn.addEventListener("click", ()=>{
+    document.querySelectorAll(".filter").forEach(b=>b.setAttribute("aria-pressed","false"));
+    btn.setAttribute("aria-pressed","true");
+    render(btn.dataset.filter);
+  });
+});
+
+/* Footer links — solo aparecen los que cargaste en CONFIG */
+const fl = document.getElementById("footer-links");
+const redes = [
+  ["WhatsApp", `https://wa.me/${CONFIG.whatsapp}`],
+  ["Instagram", CONFIG.instagram],
+  ["Facebook", CONFIG.facebook],
+  ["Mercado Libre", CONFIG.mercadolibre],
+];
+fl.innerHTML = redes
+  .filter(([_,url]) => url && url.trim() !== "")
+  .map(([txt,url]) => `<a href="${url}" target="_blank" rel="noopener">${txt}</a>`)
+  .join("");
+</script>
+</body>
+</html>
