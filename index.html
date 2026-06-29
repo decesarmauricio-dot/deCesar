@@ -3,286 +3,148 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DE · CESAR — Impresión 3D ·</title>
+<title>deCesar — Impresión 3D</title>
 <meta name="description" content="Figuras y productos impresos en 3D. Rosario, Argentina." />
 
 <!-- ════════════════════════════════════════════════════════════════
-     Open Graph: esto es lo que se ve cuando pegás el link en
-     WhatsApp / Instagram / Facebook. Cambiá la imagen por una foto
-     tuya buena cuando la tengas (1200x630px ideal).
+     Open Graph: lo que se ve cuando pegás el link en
+     WhatsApp / Instagram / Facebook. Cuando tengas una foto buena
+     (1200x630px), subila a /img y poné su nombre en og:image abajo.
      ════════════════════════════════════════════════════════════════ -->
-<meta property="og:title" content="DE · CESAR — Impresión 3D" />
-<meta property="og:description" content="Impresiones en 3D. Rosario." />
+<meta property="og:title" content="deCesar — Impresión 3D" />
+<meta property="og:description" content="Juguetes, llaveros, puzzles y accesorios impresos en 3D. Rosario." />
 <meta property="og:type" content="website" />
+<!-- <meta property="og:image" content="img/portada.jpg" /> -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 
 <style>
   :root{
-    --paper:      #F4F2EC;
-    --paper-card: #FBFAF6;
-    --ink:        #1B1916;
-    --ink-soft:   #6B645B;
-    --hairline:   #E3DDD2;
-    --porphyry:   #6E2A3C;  /* púrpura imperial: el guiño romano del nombre */
-    --porphyry-d: #571F2E;
-    --stock:      #3F6B4E;  /* verde calmo = disponible */
-    --encargo:    #A66322;  /* ámbar = por encargo */
-    --wsp:        #1FA855;
+    --bg:        #15120F;
+    --bg-2:      #1E1813;
+    --bg-3:      #271F18;
+    --text:      #ECE6DC;
+    --text-soft: #998E82;
+    --hairline:  #362D24;
+    --copper:    #C57F47;
+    --copper-d:  #9A5E30;
+    --copper-l:  #DB9A63;
+    --stock:     #6BB186;
+    --encargo:   #E0A23C;
 
-    --serif: "Cormorant Garamond", Georgia, serif;
+    --serif: "Fraunces", Georgia, serif;
     --sans:  "Hanken Grotesk", system-ui, sans-serif;
-    --mono:  "Space Mono", "SFMono-Regular", monospace;
+    --mono:  "Space Mono", monospace;
   }
 
   *{ box-sizing:border-box; margin:0; padding:0; }
-
   html{ scroll-behavior:smooth; }
-
   body{
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--sans);
-    font-size:16px;
-    line-height:1.55;
-    -webkit-font-smoothing:antialiased;
-    text-rendering:optimizeLegibility;
+    background:var(--bg); color:var(--text);
+    font-family:var(--sans); font-size:16px; line-height:1.55;
+    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
   }
+  .wrap{ width:min(1180px, 92vw); margin-inline:auto; }
+  img{ display:block; }
 
-  .wrap{ width:min(1120px, 92vw); margin-inline:auto; }
-
-  /* ───────────── HERO ───────────── */
   header.hero{
-    padding:clamp(3rem, 9vh, 6rem) 0 clamp(2.5rem, 6vh, 4rem);
-    border-bottom:1px solid var(--hairline);
-    text-align:center;
+    padding:clamp(3.5rem, 10vh, 7rem) 0 clamp(2.5rem, 6vh, 4rem);
+    border-bottom:1px solid var(--hairline); text-align:center;
   }
+  .eyebrow{ font-family:var(--mono); font-size:.72rem; letter-spacing:.34em; text-transform:uppercase; color:var(--copper); margin-bottom:1.6rem; }
+  .wordmark{ font-family:var(--serif); font-weight:600; font-size:clamp(3.6rem, 13vw, 8rem); line-height:.9; letter-spacing:-.01em; }
+  .wordmark .dot{ color:var(--copper); font-weight:700; padding-inline:.04em; }
+  .tagline{ font-family:var(--mono); font-size:clamp(.7rem,2.2vw,.85rem); letter-spacing:.22em; text-transform:uppercase; color:var(--text-soft); margin-top:1.4rem; }
+  .hero-rule{ width:54px; height:2px; background:var(--copper); margin:2.2rem auto 1.8rem; }
+  .hero-lead{ font-family:var(--serif); font-size:clamp(1.3rem,3.6vw,1.85rem); font-weight:500; line-height:1.4; max-width:24ch; margin-inline:auto; }
 
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:.72rem;
-    letter-spacing:.34em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin-bottom:1.6rem;
-  }
+  .controls{ display:flex; flex-wrap:wrap; gap:.6rem; justify-content:center; padding:2.4rem 0 .4rem; }
+  .filter{ font-family:var(--mono); font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; background:transparent; color:var(--text-soft); border:1px solid var(--hairline); border-radius:999px; padding:.55rem 1.15rem; cursor:pointer; transition:all .18s ease; }
+  .filter:hover{ border-color:var(--copper); color:var(--text); }
+  .filter[aria-pressed="true"]{ background:var(--copper); color:#1a130c; border-color:var(--copper); }
+  .filter:focus-visible{ outline:2px solid var(--copper-l); outline-offset:2px; }
 
-  /* La firma: inscripción romana con interpunct */
-  .wordmark{
-    font-family:var(--serif);
-    font-weight:600;
-    font-size:clamp(3.4rem, 12vw, 7.5rem);
-    line-height:.9;
-    letter-spacing:.06em;
-    text-transform:uppercase;
-  }
-  .wordmark .dot{
-    color:var(--porphyry);
-    font-weight:700;
-    padding-inline:.06em;
-  }
+  .grid{ display:grid; grid-template-columns:repeat(auto-fill, minmax(255px, 1fr)); gap:1.5rem; padding:2rem 0 1rem; }
+  .card{ background:var(--bg-2); border:1px solid var(--hairline); border-radius:8px; overflow:hidden; cursor:pointer; text-align:left; transition:transform .2s ease, border-color .2s ease; }
+  .card:hover{ transform:translateY(-4px); border-color:var(--copper-d); }
+  .card:focus-visible{ outline:2px solid var(--copper-l); outline-offset:3px; }
 
-  .tagline{
-    font-family:var(--mono);
-    font-size:clamp(.7rem, 2.2vw, .85rem);
-    letter-spacing:.22em;
-    text-transform:uppercase;
-    color:var(--ink-soft);
-    margin-top:1.4rem;
-  }
+  .thumb{ position:relative; aspect-ratio:1/1; background:var(--bg-3); overflow:hidden; }
+  .thumb img{ width:100%; height:100%; object-fit:cover; transition:transform .35s ease; }
+  .card:hover .thumb img{ transform:scale(1.05); }
+  .thumb.empty{ display:grid; place-items:center; background:repeating-linear-gradient(45deg, #221b14 0 14px, #1b150f 14px 28px); }
+  .thumb.empty .ph{ font-family:var(--serif); font-size:3.4rem; font-weight:600; color:var(--copper); opacity:.55; }
+  .count{ position:absolute; bottom:.6rem; right:.6rem; font-family:var(--mono); font-size:.6rem; letter-spacing:.05em; background:rgba(10,8,6,.72); color:var(--text); padding:.22rem .5rem; border-radius:999px; }
 
-  .hero-rule{
-    width:48px; height:2px; background:var(--porphyry);
-    margin:2.2rem auto 1.8rem;
-  }
-
-  .hero-lead{
-    font-family:var(--serif);
-    font-size:clamp(1.25rem, 3.4vw, 1.7rem);
-    font-weight:500;
-    line-height:1.45;
-    max-width:30ch;
-    margin-inline:auto;
-    color:var(--ink);
-  }
-
-  /* ───────────── FILTROS ───────────── */
-  .controls{
-    display:flex; flex-wrap:wrap; gap:.6rem;
-    justify-content:center;
-    padding:2.2rem 0 .4rem;
-  }
-  .filter{
-    font-family:var(--mono);
-    font-size:.72rem;
-    letter-spacing:.14em;
-    text-transform:uppercase;
-    background:transparent;
-    color:var(--ink-soft);
-    border:1px solid var(--hairline);
-    border-radius:999px;
-    padding:.55rem 1.1rem;
-    cursor:pointer;
-    transition:all .18s ease;
-  }
-  .filter:hover{ border-color:var(--ink); color:var(--ink); }
-  .filter[aria-pressed="true"]{
-    background:var(--ink); color:var(--paper); border-color:var(--ink);
-  }
-  .filter:focus-visible{ outline:2px solid var(--porphyry); outline-offset:2px; }
-
-  /* ───────────── GRID ───────────── */
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(270px, 1fr));
-    gap:1.6rem;
-    padding:2rem 0 1rem;
-  }
-
-  .card{
-    background:var(--paper-card);
-    border:1px solid var(--hairline);
-    border-radius:4px;
-    overflow:hidden;
-    display:flex; flex-direction:column;
-    transition:transform .2s ease, box-shadow .2s ease;
-  }
-  .card:hover{
-    transform:translateY(-3px);
-    box-shadow:0 14px 30px -18px rgba(27,25,22,.4);
-  }
-
-  .thumb{
-    position:relative;
-    aspect-ratio:4/3;
-    background:var(--paper);
-    overflow:hidden;
-    border-bottom:1px solid var(--hairline);
-  }
-  .thumb img{ width:100%; height:100%; object-fit:cover; display:block; }
-
-  /* placeholder cuando todavía no cargaste foto */
-  .thumb.empty{
-    display:grid; place-items:center;
-    background:
-      repeating-linear-gradient(45deg, #ECE7DD 0 12px, #F2EDE4 12px 24px);
-  }
-  .thumb.empty span{
-    font-family:var(--serif);
-    font-size:3.2rem; font-weight:600;
-    color:var(--porphyry);
-    opacity:.5;
-  }
-
-  .badge{
-    position:absolute; top:.7rem; left:.7rem;
-    font-family:var(--mono);
-    font-size:.62rem; letter-spacing:.1em; text-transform:uppercase;
-    padding:.34rem .6rem;
-    border-radius:999px;
-    background:var(--paper-card);
-    display:inline-flex; align-items:center; gap:.4rem;
-    box-shadow:0 1px 4px rgba(0,0,0,.08);
-  }
+  .badge{ position:absolute; top:.7rem; left:.7rem; font-family:var(--mono); font-size:.6rem; letter-spacing:.1em; text-transform:uppercase; padding:.34rem .6rem; border-radius:999px; background:rgba(10,8,6,.78); display:inline-flex; align-items:center; gap:.42rem; }
   .badge .pip{ width:7px; height:7px; border-radius:50%; }
-  .badge.stock   .pip{ background:var(--stock); }
-  .badge.encargo .pip{ background:var(--encargo); }
-  .badge.stock   { color:var(--stock); }
-  .badge.encargo { color:var(--encargo); }
+  .badge.stock   .pip{ background:var(--stock); }   .badge.stock   { color:var(--stock); }
+  .badge.encargo .pip{ background:var(--encargo); } .badge.encargo { color:var(--encargo); }
 
-  .card-body{ padding:1.1rem 1.1rem 1.2rem; display:flex; flex-direction:column; gap:.55rem; flex:1; }
+  .card-body{ padding:.95rem 1.05rem 1.1rem; }
+  .card h3{ font-family:var(--serif); font-size:1.32rem; font-weight:600; line-height:1.15; }
+  .card .subtitle{ font-family:var(--mono); font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-soft); margin-top:.25rem; }
+  .card .price{ font-family:var(--mono); font-size:1.12rem; font-weight:700; color:var(--text); margin-top:.7rem; }
 
-  .card h3{
-    font-family:var(--serif);
-    font-size:1.5rem; font-weight:600; line-height:1.1;
-  }
-  .licencia{
-    font-family:var(--mono);
-    font-size:.66rem; letter-spacing:.12em; text-transform:uppercase;
-    color:var(--ink-soft);
-    margin-top:-.2rem;
-  }
+  .modal[hidden]{ display:none; }
+  .modal{ position:fixed; inset:0; z-index:50; display:flex; align-items:center; justify-content:center; padding:1.2rem; }
+  .modal-bg{ position:absolute; inset:0; background:rgba(8,6,4,.82); backdrop-filter:blur(2px); }
+  .modal-card{ position:relative; z-index:1; background:var(--bg-2); border:1px solid var(--hairline); border-radius:12px; width:min(960px, 100%); max-height:92vh; overflow:auto; display:grid; grid-template-columns:1.05fr 1fr; }
+  .modal-close{ position:absolute; top:.7rem; right:.7rem; z-index:3; width:38px; height:38px; border-radius:50%; cursor:pointer; background:rgba(10,8,6,.7); color:var(--text); border:1px solid var(--hairline); font-size:1.3rem; line-height:1; display:flex; align-items:center; justify-content:center; }
+  .modal-close:hover{ border-color:var(--copper); color:var(--copper-l); }
 
-  .specs{
-    font-family:var(--mono);
-    font-size:.72rem; line-height:1.7;
-    color:var(--ink-soft);
-    border-top:1px solid var(--hairline);
-    padding-top:.6rem; margin-top:.2rem;
-  }
-  .specs span{ color:var(--ink); }
+  .gallery{ background:var(--bg-3); padding:1rem; display:flex; flex-direction:column; gap:.7rem; }
+  .gallery .main{ aspect-ratio:1/1; border-radius:8px; overflow:hidden; background:var(--bg); }
+  .gallery .main img{ width:100%; height:100%; object-fit:cover; }
+  .gallery .main.empty{ display:grid; place-items:center; background:repeating-linear-gradient(45deg, #221b14 0 14px, #1b150f 14px 28px); }
+  .gallery .main.empty .ph{ font-family:var(--serif); font-size:4rem; color:var(--copper); opacity:.55; }
+  .thumbs{ display:flex; gap:.5rem; flex-wrap:wrap; }
+  .thumbs button{ width:58px; height:58px; border-radius:6px; overflow:hidden; cursor:pointer; padding:0; border:2px solid transparent; background:var(--bg); }
+  .thumbs button img{ width:100%; height:100%; object-fit:cover; }
+  .thumbs button[aria-current="true"]{ border-color:var(--copper); }
 
-  .price-row{ display:flex; align-items:baseline; justify-content:space-between; margin-top:auto; padding-top:.5rem; }
-  .price{ font-family:var(--mono); font-size:1.15rem; font-weight:700; }
+  .detail{ padding:1.6rem 1.7rem 1.8rem; }
+  .detail .dbadge{ font-family:var(--mono); font-size:.64rem; letter-spacing:.1em; text-transform:uppercase; display:inline-flex; align-items:center; gap:.45rem; margin-bottom:.9rem; }
+  .detail .dbadge .pip{ width:8px; height:8px; border-radius:50%; }
+  .detail .dbadge.stock{ color:var(--stock); }   .detail .dbadge.stock .pip{ background:var(--stock); }
+  .detail .dbadge.encargo{ color:var(--encargo); } .detail .dbadge.encargo .pip{ background:var(--encargo); }
+  .detail h2{ font-family:var(--serif); font-size:2.1rem; font-weight:600; line-height:1.08; }
+  .detail .dsub{ font-family:var(--mono); font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-soft); margin-top:.35rem; }
+  .detail .dprice{ font-family:var(--mono); font-size:1.7rem; font-weight:700; margin:1rem 0 .2rem; }
+  .detail .ddesc{ color:#d4cdc2; margin:1rem 0; line-height:1.6; }
+  .dspecs{ font-family:var(--mono); font-size:.78rem; line-height:1.9; color:var(--text-soft); border-top:1px solid var(--hairline); border-bottom:1px solid var(--hairline); padding:.8rem 0; margin:1rem 0; }
+  .dspecs b{ color:var(--text); font-weight:400; }
+  .dmade{ font-family:var(--mono); font-size:.64rem; letter-spacing:.08em; text-transform:uppercase; color:var(--copper); margin-bottom:1.2rem; }
 
-  .cta{
-    margin-top:.7rem;
-    display:flex; align-items:center; justify-content:center; gap:.5rem;
-    font-family:var(--sans);
-    font-size:.85rem; font-weight:600;
-    text-decoration:none;
-    background:var(--ink); color:var(--paper);
-    border-radius:3px;
-    padding:.75rem 1rem;
-    transition:background .18s ease;
-  }
-  .cta:hover{ background:var(--porphyry); }
-  .cta:focus-visible{ outline:2px solid var(--porphyry); outline-offset:2px; }
-  .cta svg{ width:16px; height:16px; }
+  .cta{ display:flex; align-items:center; justify-content:center; gap:.55rem; font-family:var(--sans); font-size:.92rem; font-weight:600; text-decoration:none; background:var(--copper); color:#1a130c; border-radius:6px; padding:.85rem 1rem; transition:background .18s ease; }
+  .cta:hover{ background:var(--copper-l); }
+  .cta:focus-visible{ outline:2px solid var(--text); outline-offset:2px; }
+  .cta svg{ width:17px; height:17px; }
 
-  /* ───────────── CÓMO COMPRAR ───────────── */
-  .comprar{
-    margin-top:3rem;
-    border-top:1px solid var(--hairline);
-    padding:3.4rem 0;
-  }
-  .section-label{
-    font-family:var(--mono);
-    font-size:.72rem; letter-spacing:.3em; text-transform:uppercase;
-    color:var(--porphyry);
-    margin-bottom:1.4rem;
-  }
-  .comprar h2{
-    font-family:var(--serif); font-weight:600;
-    font-size:clamp(1.8rem,5vw,2.6rem);
-    line-height:1.1; margin-bottom:1.8rem;
-  }
-  .modos{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.6rem; }
-  .modo{ border:1px solid var(--hairline); border-radius:4px; padding:1.4rem 1.3rem; background:var(--paper-card); }
+  .comprar{ margin-top:3.5rem; border-top:1px solid var(--hairline); padding:3.6rem 0; }
+  .section-label{ font-family:var(--mono); font-size:.72rem; letter-spacing:.3em; text-transform:uppercase; color:var(--copper); margin-bottom:1.2rem; }
+  .comprar h2{ font-family:var(--serif); font-weight:600; font-size:clamp(1.9rem,5vw,2.7rem); line-height:1.08; margin-bottom:1.9rem; }
+  .modos{ display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.4rem; }
+  .modo{ border:1px solid var(--hairline); border-radius:8px; padding:1.4rem 1.3rem; background:var(--bg-2); }
   .modo .tit{ display:flex; align-items:center; gap:.6rem; font-family:var(--mono); font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; margin-bottom:.8rem; }
   .modo .pip{ width:9px; height:9px; border-radius:50%; }
   .modo.stock   .pip{ background:var(--stock); }   .modo.stock   .tit{ color:var(--stock); }
   .modo.encargo .pip{ background:var(--encargo); } .modo.encargo .tit{ color:var(--encargo); }
-  .modo p{ font-size:.92rem; color:var(--ink-soft); }
-  .modo p strong{ color:var(--ink); }
+  .modo p{ font-size:.94rem; color:var(--text-soft); }
+  .modo p strong{ color:var(--text); }
 
-  /* ───────────── FOOTER ───────────── */
-  footer{
-    border-top:1px solid var(--hairline);
-    padding:2.8rem 0 3.4rem;
-    text-align:center;
-  }
-  footer .wordmark-sm{
-    font-family:var(--serif); font-weight:600;
-    font-size:1.6rem; letter-spacing:.1em; text-transform:uppercase;
-    margin-bottom:1.2rem;
-  }
-  footer .wordmark-sm .dot{ color:var(--porphyry); }
-  .links{ display:flex; gap:1.4rem; justify-content:center; flex-wrap:wrap; margin-bottom:1.6rem; }
-  .links a{
-    font-family:var(--mono); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase;
-    color:var(--ink); text-decoration:none;
-    border-bottom:1px solid var(--porphyry); padding-bottom:2px;
-  }
-  .links a:hover{ color:var(--porphyry); }
-  footer small{ font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; color:var(--ink-soft); }
+  footer{ border-top:1px solid var(--hairline); padding:2.8rem 0 3.4rem; text-align:center; }
+  footer .wordmark-sm{ font-family:var(--serif); font-weight:600; font-size:1.7rem; }
+  footer .wordmark-sm .dot{ color:var(--copper); }
+  .links{ display:flex; gap:1.4rem; justify-content:center; flex-wrap:wrap; margin:1.2rem 0 1.6rem; }
+  .links a{ font-family:var(--mono); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text); text-decoration:none; border-bottom:1px solid var(--copper); padding-bottom:2px; }
+  .links a:hover{ color:var(--copper-l); }
+  footer small{ font-family:var(--mono); font-size:.66rem; letter-spacing:.08em; color:var(--text-soft); }
 
-  @media (prefers-reduced-motion: reduce){
-    *{ animation:none !important; transition:none !important; }
-    html{ scroll-behavior:auto; }
-  }
+  @media (max-width:720px){ .modal-card{ grid-template-columns:1fr; } }
+  @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important; } html{ scroll-behavior:auto; } }
 </style>
 </head>
 <body>
@@ -293,7 +155,7 @@
       <h1 class="wordmark">de<span class="dot">·</span>Cesar</h1>
       <p class="tagline">Impresión 3D</p>
       <div class="hero-rule"></div>
-      <p class="hero-lead">Piezas impresas: juguetes, puzzles, llaveros,accesorios.</p>
+      <p class="hero-lead">Piezas impresas: juguetes, puzzles, llaveros, accesorios.</p>
     </div>
   </header>
 
@@ -316,10 +178,10 @@
         </div>
         <div class="modo encargo">
           <div class="tit"><span class="pip"></span>Por encargo</div>
-          <p>Algunas piezas las imprimo a pedido. El tiempo de producción es de <strong>1 a 5 días hábiles</strong> según el tamaño y la complejdad.</p>
+          <p>Algunas piezas las imprimo a pedido. El tiempo de producción es de <strong>1 a 5 días hábiles</strong> según el tamaño y la complejidad.</p>
         </div>
         <div class="modo">
-          <div class="tit" style="color:var(--ink)"><span class="pip" style="background:var(--ink)"></span>Envíos</div>
+          <div class="tit" style="color:var(--text)"><span class="pip" style="background:var(--text)"></span>Envíos</div>
           <p>Envío a todo el país (Correo Argentino / Andreani) o retiro en Rosario. ¿Querés otro color o un tamaño especial? <strong>Se puede</strong>, escribime.</p>
         </div>
       </div>
@@ -328,23 +190,43 @@
 
   <footer>
     <div class="wrap">
-      <div class="wordmark-sm">DE<span class="dot">·</span>CESAR</div>
+      <div class="wordmark-sm">de<span class="dot">·</span>Cesar</div>
       <div class="links" id="footer-links"></div>
       <small id="footer-note">Impresión 3D · Rosario, Santa Fe</small>
     </div>
   </footer>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-bg" data-close></div>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="m-name">
+      <button class="modal-close" data-close aria-label="Cerrar">&times;</button>
+      <div class="gallery">
+        <div class="main" id="m-main"></div>
+        <div class="thumbs" id="m-thumbs"></div>
+      </div>
+      <div class="detail">
+        <div id="m-badge"></div>
+        <h2 id="m-name"></h2>
+        <div class="dsub" id="m-sub"></div>
+        <div class="dprice" id="m-price"></div>
+        <div class="dspecs" id="m-specs"></div>
+        <p class="ddesc" id="m-desc"></p>
+        <p class="dmade">Impreso en 3D · hecho a mano en Rosario</p>
+        <a class="cta" id="m-wsp" target="_blank" rel="noopener"></a>
+      </div>
+    </div>
+  </div>
 
 <script>
 /* ═══════════════════════════════════════════════════════════════════════
    ░░  1) CONFIGURACIÓN — editá SOLO esto con tus datos  ░░
    ═══════════════════════════════════════════════════════════════════════ */
 const CONFIG = {
-  // Tu número de WhatsApp en formato internacional, SIN + ni espacios.
-  // Argentina + Rosario: 549 + 341 + número.  Ej: 5493415555555
-  whatsapp: "+54 9 341 594 1513",
+  // WhatsApp en formato internacional, TODO PEGADO, sin + ni espacios ni guiones.
+  // 54 (Argentina) + 9 + 341 (Rosario) + tu número.
+  whatsapp: "5493415941513",
 
-  // Links de tus redes (dejá "" en el que no uses y desaparece del footer)
-  instagram:    "https://www.instagram.com/maudecesar_/?hl=en",
+  instagram:    "https://www.instagram.com/maudecesar_/",
   facebook:     "https://www.facebook.com/mauri.decesar",
   mercadolibre: "",   // ej: "https://articulo.mercadolibre.com.ar/..."
 };
@@ -352,59 +234,69 @@ const CONFIG = {
 /* ═══════════════════════════════════════════════════════════════════════
    ░░  2) PRODUCTOS — agregá / sacá / editá bloques de acá  ░░
 
-   Cada producto es un { ... }. Para sumar uno nuevo, copiá un bloque
-   entero (desde la { hasta la }, con la coma final) y cambiale los datos.
+   Para sumar uno nuevo: copiá un bloque entero { ... }, con su coma final,
+   y cambiale los datos.
 
    Campos:
-     nombre   → cómo se llama la pieza
-     licencia → de qué es (personaje / saga)
-     precio   → texto libre, ej "$ 12.000"
-     estado   → "stock"  o  "encargo"   (eso pinta el cartelito)
-     dias     → solo si es encargo, ej "3-5 días"  (poné "" si es stock)
-     medidas  → ej "14 cm de alto"
-     material → ej "PLA · multicolor"
-     img      → ruta o URL de la foto. Dejá ""  →  muestra un placeholder.
-                Para usar fotos propias: poné todas en una carpeta /img
-                al lado de este archivo y acá escribí  "img/loquesea.jpg"
+     nombre      → cómo se llama la pieza
+     subtitulo   → opcional: licencia o categoría. Si no tenés, dejá ""
+     precio      → texto libre, ej "$ 12.000"
+     estado      → "stock"  o  "encargo"
+     dias        → si es encargo, ej "3-5 días"  (poné "" si es stock)
+     medidas     → ej "14 cm"
+     material    → ej "PLA · multicolor"
+     descripcion → el texto que se lee al abrir el producto
+     imgs        → lista de fotos/gifs. Podés poner una o VARIAS:
+                     imgs: ["img/casco1.gif", "img/casco2.jpg", "img/casco3.jpg"]
+                   La primera es la que se ve en la grilla; al abrir, se ven todas.
+                   Sin fotos todavía:  imgs: []
+                   ⚠ Los nombres de archivo van SIN ESPACIOS:
+                     "img/pistola1.png"  ✓     "img/pistola 1.png"  ✗
    ═══════════════════════════════════════════════════════════════════════ */
 const PRODUCTOS = [
   {
     nombre:   "Pistola Llavero",
+    subtitulo:"Llavero",
     precio:   "$ 8.500",
     estado:   "stock",
     dias:     "",
-    medidas:  "6cm",
+    medidas:  "6 cm",
     material: "PLA · negro mate",
-    img:      "pistola 1.png"
+    descripcion: "Llavero compacto impreso en 3D, resistente y liviano. Ideal para llevar siempre encima. Disponible en otros colores a pedido.",
+    imgs:     ["img/pistola1.png"]
   },
   {
     nombre:   "Pistola con Movimiento",
+    subtitulo:"Juguete articulado",
     precio:   "$ 9.500",
     estado:   "stock",
     dias:     "",
-    medidas:  "12cm",
+    medidas:  "12 cm",
     material: "PLA · multicolor",
-    img:      ""
+    descripcion: "Pieza impresa con partes móviles que funcionan apenas sale de la impresora, sin tornillos ni armado. Multicolor.",
+    imgs:     []
   },
   {
-    nombre:   "Busto detallado",
-    licencia: "The Witcher",
-    precio:   "$ 24.000",
+    nombre:   "Puzzle 3D",
+    subtitulo:"Juego de ingenio",
+    precio:   "$ 6.000",
     estado:   "encargo",
-    dias:     "3-5 días",
-    medidas:  "20 cm de alto",
-    material: "Resina · gris primer",
-    img:      ""
+    dias:     "2-4 días",
+    medidas:  "8 cm",
+    material: "PLA · colores a elección",
+    descripcion: "Puzzle impreso en 3D para armar y desarmar. Se hace a pedido en los colores que elijas.",
+    imgs:     []
   },
   {
-    nombre:   "Llavero a pedido",
-    licencia: "Personalizado",
+    nombre:   "Llavero personalizado",
+    subtitulo:"Hecho a medida",
     precio:   "$ 2.500",
     estado:   "encargo",
     dias:     "2-3 días",
     medidas:  "5 cm",
     material: "PLA · color a elección",
-    img:      ""
+    descripcion: "Llavero con el nombre, logo o forma que quieras. Mandame la idea por WhatsApp y lo diseñamos juntos.",
+    imgs:     []
   },
 ];
 
@@ -413,50 +305,45 @@ const PRODUCTOS = [
    ═══════════════════════════════════════════════════════════════════════ */
 const wspIcon = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.4 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 .9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2.1.3 0 .5l-.4.6-.3.3c-.1.1-.3.3-.1.5.1.3.7 1.1 1.5 1.8 1 .9 1.8 1.1 2 1.2.3.1.4.1.6-.1l.7-.9c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.2.5.3.1.2.1.7-.1 1.2Z"/></svg>';
 
-function badge(p){
+const inicial = p => (p.nombre || "?").trim().charAt(0).toUpperCase();
+const tieneImgs = p => Array.isArray(p.imgs) && p.imgs.length > 0;
+
+function badgeHTML(p){
   const cls = p.estado === "stock" ? "stock" : "encargo";
-  const txt = p.estado === "stock"
-    ? "En stock"
-    : (p.dias ? "Encargo · " + p.dias : "Por encargo");
+  const txt = p.estado === "stock" ? "En stock" : (p.dias ? "Encargo · " + p.dias : "Por encargo");
   return `<span class="badge ${cls}"><span class="pip"></span>${txt}</span>`;
 }
 
-function thumb(p){
-  if (p.img && p.img.trim() !== "")
-    return `<div class="thumb"><img src="${p.img}" alt="${p.nombre} — ${p.licencia}" loading="lazy"/>${badge(p)}</div>`;
-  const inicial = (p.nombre || "?").trim().charAt(0).toUpperCase();
-  return `<div class="thumb empty"><span>${inicial}</span>${badge(p)}</div>`;
-}
-
 function waLink(p){
-  const msg = `Hola! Me interesa "${p.nombre}" (${p.licencia}) — ${p.precio}. ¿Está disponible?`;
+  const msg = `Hola! Me interesa "${p.nombre}" — ${p.precio}. ¿Está disponible?`;
   return `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;
 }
 
-function card(p){
-  return `<article class="card" data-estado="${p.estado}">
-    ${thumb(p)}
+function cardThumb(p){
+  if (tieneImgs(p)){
+    const extra = p.imgs.length > 1 ? `<span class="count">${p.imgs.length} fotos</span>` : "";
+    return `<div class="thumb"><img src="${p.imgs[0]}" alt="${p.nombre}" loading="lazy"/>${badgeHTML(p)}${extra}</div>`;
+  }
+  return `<div class="thumb empty"><span class="ph">${inicial(p)}</span>${badgeHTML(p)}</div>`;
+}
+
+function cardHTML(p, i){
+  return `<div class="card" role="button" tabindex="0" data-i="${i}" aria-label="Ver ${p.nombre}">
+    ${cardThumb(p)}
     <div class="card-body">
       <h3>${p.nombre}</h3>
-      <div class="licencia">${p.licencia}</div>
-      <div class="specs">
-        Medida&nbsp;&nbsp;<span>${p.medidas}</span><br/>
-        Material&nbsp;<span>${p.material}</span>
-      </div>
-      <div class="price-row"><span class="price">${p.precio}</span></div>
-      <a class="cta" href="${waLink(p)}" target="_blank" rel="noopener">
-        ${wspIcon} Consultar por WhatsApp
-      </a>
+      ${p.subtitulo ? `<div class="subtitle">${p.subtitulo}</div>` : ""}
+      <div class="price">${p.precio}</div>
     </div>
-  </article>`;
+  </div>`;
 }
 
 const grid = document.getElementById("grid");
 function render(filtro="todos"){
-  const lista = filtro === "todos" ? PRODUCTOS : PRODUCTOS.filter(p => p.estado === filtro);
-  grid.innerHTML = lista.length
-    ? lista.map(card).join("")
-    : `<p style="grid-column:1/-1;text-align:center;font-family:var(--mono);color:var(--ink-soft);padding:2rem 0">No hay piezas en esta categoría por ahora.</p>`;
+  const items = PRODUCTOS.map((p,i)=>({p,i})).filter(({p}) => filtro === "todos" || p.estado === filtro);
+  grid.innerHTML = items.length
+    ? items.map(({p,i}) => cardHTML(p,i)).join("")
+    : `<p style="grid-column:1/-1;text-align:center;font-family:var(--mono);color:var(--text-soft);padding:2rem 0">No hay piezas en esta categoría por ahora.</p>`;
 }
 render();
 
@@ -468,18 +355,73 @@ document.querySelectorAll(".filter").forEach(btn=>{
   });
 });
 
-/* Footer links — solo aparecen los que cargaste en CONFIG */
+const modal = document.getElementById("modal");
+const mMain = document.getElementById("m-main");
+const mThumbs = document.getElementById("m-thumbs");
+
+function setMainImg(p, idx){
+  if (tieneImgs(p)){
+    mMain.className = "main";
+    mMain.innerHTML = `<img src="${p.imgs[idx]}" alt="${p.nombre}"/>`;
+  } else {
+    mMain.className = "main empty";
+    mMain.innerHTML = `<span class="ph">${inicial(p)}</span>`;
+  }
+  mThumbs.querySelectorAll("button").forEach((b,k)=> b.setAttribute("aria-current", k===idx ? "true":"false"));
+}
+
+function openModal(i){
+  const p = PRODUCTOS[i];
+  const cls = p.estado === "stock" ? "stock" : "encargo";
+  const txt = p.estado === "stock" ? "En stock" : (p.dias ? "Por encargo · " + p.dias : "Por encargo");
+  document.getElementById("m-badge").outerHTML = `<div id="m-badge" class="dbadge ${cls}"><span class="pip"></span>${txt}</div>`;
+  document.getElementById("m-name").textContent = p.nombre;
+  const sub = document.getElementById("m-sub");
+  sub.textContent = p.subtitulo || ""; sub.style.display = p.subtitulo ? "block":"none";
+  document.getElementById("m-price").textContent = p.precio;
+  document.getElementById("m-specs").innerHTML = `Medidas&nbsp;&nbsp;<b>${p.medidas}</b><br/>Material&nbsp;&nbsp;<b>${p.material}</b>`;
+  document.getElementById("m-desc").textContent = p.descripcion || "";
+  const wsp = document.getElementById("m-wsp");
+  wsp.href = waLink(p);
+  wsp.innerHTML = `${wspIcon} Consultar por WhatsApp`;
+
+  mThumbs.innerHTML = (tieneImgs(p) && p.imgs.length > 1)
+    ? p.imgs.map((src,k)=>`<button data-k="${k}"><img src="${src}" alt=""/></button>`).join("")
+    : "";
+  mThumbs.querySelectorAll("button").forEach(b=>{
+    b.addEventListener("click", ()=> setMainImg(p, parseInt(b.dataset.k)));
+  });
+  setMainImg(p, 0);
+
+  modal.hidden = false;
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(){
+  modal.hidden = true;
+  document.body.style.overflow = "";
+}
+
+grid.addEventListener("click", e=>{
+  const card = e.target.closest(".card");
+  if (card) openModal(parseInt(card.dataset.i));
+});
+grid.addEventListener("keydown", e=>{
+  if ((e.key === "Enter" || e.key === " ") && e.target.classList.contains("card")){
+    e.preventDefault(); openModal(parseInt(e.target.dataset.i));
+  }
+});
+modal.querySelectorAll("[data-close]").forEach(el=> el.addEventListener("click", closeModal));
+document.addEventListener("keydown", e=>{ if (e.key === "Escape" && !modal.hidden) closeModal(); });
+
 const fl = document.getElementById("footer-links");
-const redes = [
+fl.innerHTML = [
   ["WhatsApp", `https://wa.me/${CONFIG.whatsapp}`],
   ["Instagram", CONFIG.instagram],
   ["Facebook", CONFIG.facebook],
   ["Mercado Libre", CONFIG.mercadolibre],
-];
-fl.innerHTML = redes
-  .filter(([_,url]) => url && url.trim() !== "")
-  .map(([txt,url]) => `<a href="${url}" target="_blank" rel="noopener">${txt}</a>`)
-  .join("");
+].filter(([_,u]) => u && u.trim() !== "")
+ .map(([t,u]) => `<a href="${u}" target="_blank" rel="noopener">${t}</a>`).join("");
 </script>
 </body>
 </html>
